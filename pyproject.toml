@@ -8,10 +8,14 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pplpy"
-description = "Python PPL wrapper"
+name = "passagemath-ppl"
+description = "Python wrapper for the Parma Polyhedra Library (pplpy fork)"
 readme = "README.rst"
 authors = [{name = "Vincent Delecroix", email = "vincent.delecroix@labri.fr"}]
+maintainers = [
+    {name = "Matthias Köppe"},
+    {name = "passagemath contributors"},
+]
 license = {text = "GPL v3"}
 classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
@@ -25,6 +29,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 keywords = [
     "polyhedron",
@@ -47,8 +52,8 @@ doc = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/sagemath/pplpy"
-Download = "https://pypi.org/project/pplpy/#files"
+"Repo (upstream)" = "https://github.com/sagemath/pplpy"
+"Repo" = "https://github.com/passagemath/passagemath-ppl"
 
 [tool.setuptools]
 packages = ["ppl"]
