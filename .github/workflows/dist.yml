@@ -50,6 +50,7 @@ jobs:
       SPKGS: _bootstrap _prereq
       # Non-Python packages to install as spkgs
       TARGETS_PRE: gmp mpfr mpc ppl-ensure
+      CIBW_BUILD: "*${{ matrix.build }}*"
       # Disable building PyPy wheels on all platforms
       CIBW_SKIP: "pp*"
       #
@@ -164,6 +165,7 @@ jobs:
       SPKGS: _bootstrap _prereq
       # Non-Python packages to install as spkgs
       TARGETS_PRE: ppl-ensure
+      CIBW_BUILD: "*${{ matrix.build }}*"
       # Disable building PyPy wheels on all platforms
       CIBW_SKIP: "pp*"
       #
