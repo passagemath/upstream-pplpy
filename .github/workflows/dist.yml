@@ -50,6 +50,7 @@ jobs:
       SPKGS: _bootstrap _prereq
       # Non-Python packages to install as spkgs
       TARGETS_PRE: gmp mpfr mpc ppl-ensure
+      CIBW_BUILD: "*${{ matrix.build }}*"
       # Disable building PyPy wheels on all platforms
       CIBW_SKIP: "pp*"
       #
@@ -164,6 +165,7 @@ jobs:
       SPKGS: _bootstrap _prereq
       # Non-Python packages to install as spkgs
       TARGETS_PRE: ppl-ensure
+      CIBW_BUILD: "*${{ matrix.build }}*"
       # Disable building PyPy wheels on all platforms
       CIBW_SKIP: "pp*"
       #
@@ -172,7 +174,7 @@ jobs:
       CIBW_PROJECT_REQUIRES_PYTHON: ">=3.9"
       # Run before wheel build
       CIBW_BEFORE_BUILD_WINDOWS: |
-        pip install delvewheel
+        pip install delvewheel && pip install --config-settings setup-args="--vsenv" cysignals
       # Environment during wheel build
       # PYTHONUTF8=1 is for delvewheel
       CIBW_ENVIRONMENT: >-
@@ -263,13 +265,13 @@ jobs:
             config.status
             sage-local
           key: >-
-            ${{ runner.os }}-cibuildwheel-${{ matrix.arch }}-build=${{
+            ${{ matrix.os }}-cibuildwheel-${{ matrix.arch }}-build=${{
               hashFiles('build',
                         'configure.ac',
                         'm4')
             }}
           restore-keys: |
-            ${{ runner.os }}-cibuildwheel-${{ matrix.arch }}
+            ${{ matrix.os }}-cibuildwheel-${{ matrix.arch }}
 
       - name: Unpack and prepare
         id: unpack
